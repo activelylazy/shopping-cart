@@ -26,4 +26,16 @@ public class ProductTest {
 		assertThat(product.getPrice(3L), equalTo(new BigDecimal("1.20")));
 		assertThat(product.getPrice(4L), equalTo(new BigDecimal("1.20")));
 	}
+
+	@Test
+	public void threeForTwo() {
+		Product product = new Product("Name", new BigDecimal("0.60"), 2, 3);
+		
+		assertThat(product.getPrice(1L), equalTo(new BigDecimal("0.60")));
+		assertThat(product.getPrice(2L), equalTo(new BigDecimal("1.20")));
+		assertThat(product.getPrice(3L), equalTo(new BigDecimal("1.20")));
+		assertThat(product.getPrice(4L), equalTo(new BigDecimal("1.80")));
+		assertThat(product.getPrice(5L), equalTo(new BigDecimal("2.40")));
+		assertThat(product.getPrice(6L), equalTo(new BigDecimal("2.40")));
+	}
 }

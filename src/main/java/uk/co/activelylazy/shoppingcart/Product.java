@@ -27,7 +27,7 @@ class Product {
 	public BigDecimal getPrice(Long count) {
 		int offersTaken = count.intValue() / getItems;
 		int remainder = count.intValue() % getItems;
-		return price.multiply(new BigDecimal(offersTaken + remainder));
+		return price.multiply(new BigDecimal((payForItems * offersTaken) + remainder));
 	}
 	
 }
