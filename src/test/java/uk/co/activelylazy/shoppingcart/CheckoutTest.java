@@ -27,4 +27,13 @@ public class CheckoutTest {
 		
 		assertThat(checkout.scan(asList()), equalTo(BigDecimal.ZERO));
 	}
+	
+	@Test
+	public void offers() {
+		List<String> items = asList("Apple", "Apple", "Apple", "Orange", "Orange", "Orange", "Orange");
+		
+		Checkout checkout = new Checkout();
+		
+		assertThat(checkout.scan(items), equalTo(new BigDecimal("1.95")));
+	}
 }
