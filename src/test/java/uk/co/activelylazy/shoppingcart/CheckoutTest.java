@@ -20,4 +20,11 @@ public class CheckoutTest {
 		
 		assertThat(price, equalTo(new BigDecimal("2.05")));
 	}
+	
+	@Test
+	public void emptyListHasPriceZero() {
+		Checkout checkout = new Checkout();
+		
+		assertThat(checkout.scan(asList()), equalTo(BigDecimal.ZERO));
+	}
 }
