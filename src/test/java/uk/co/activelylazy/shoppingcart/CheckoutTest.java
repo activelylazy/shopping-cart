@@ -13,12 +13,12 @@ public class CheckoutTest {
 
 	@Test
 	public void scansItems() {
-		List<String> items = asList("Apple", "Orange");
+		List<String> items = asList("Apple", "Orange", "Orange");
 		
 		Checkout checkout = new Checkout();
 		BigDecimal price = checkout.scan(items);
 		
-		assertThat(price, equalTo(new BigDecimal("0.85")));
+		assertThat(price, equalTo(new BigDecimal("1.10")));
 	}
 	
 	@Test
