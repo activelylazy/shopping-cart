@@ -18,6 +18,10 @@ class Product {
 	
 	public BigDecimal getPrice() {
 		return price;
-	}	
+	}
+	
+	public BigDecimal getPrice(Long count) {
+		return price.multiply(new BigDecimal(count));
+	}
 	
 }
