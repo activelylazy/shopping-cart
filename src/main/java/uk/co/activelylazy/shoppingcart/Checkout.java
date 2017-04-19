@@ -18,18 +18,18 @@ public class Checkout {
 		for (Map.Entry<String, Long> entry : counts.entrySet()) {
 			String item = entry.getKey();
 			Long count = entry.getValue();
-			total = total.add(toItemPrice(item).multiply(new BigDecimal(count)));
+			total = total.add(toItemPrice(item, count));
 		}
 		
 		return total;
 	}
 
-	private BigDecimal toItemPrice(String item) {
+	private BigDecimal toItemPrice(String item, Long count) {
 		if (Apple.getName().equals(item)) {
-			return Apple.getPrice();
+			return Apple.getPrice(count);
 		}
 		if (Orange.getName().equals(item)) {
-			return Orange.getPrice();
+			return Orange.getPrice(count);
 		}
 		return BigDecimal.ZERO;
 	}
