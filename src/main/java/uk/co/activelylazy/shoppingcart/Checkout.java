@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class Checkout {
 	
-	private static final Product Apple = new Product("Apple", new BigDecimal("0.60"));
-	private static final Product Orange = new Product("Orange", new BigDecimal("0.25"));
+	private static final Product Apple = new Product("Apple", new BigDecimal("0.60"), 1, 1);
+	private static final Product Orange = new Product("Orange", new BigDecimal("0.25"), 1, 1);
 	
 	public BigDecimal scan(List<String> items) {
 		Map<String, Long> counts = items.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
