@@ -2,6 +2,9 @@ package uk.co.activelylazy.shoppingcart;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Checkout {
 	
@@ -9,9 +12,16 @@ public class Checkout {
 	private static final Product Orange = new Product("Orange", new BigDecimal("0.25"));
 	
 	public BigDecimal scan(List<String> items) {
-		return items.stream()
-				.map(this::toItemPrice)
-				.reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
+		Map<String, Long> counts = items.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		
+		BigDecimal total = BigDecimal.ZERO;
+		for (Map.Entry<String, Long> entry : counts.entrySet()) {
+			String item = entry.getKey();
+			Long count = entry.getValue();
+			total = total.add(toItemPrice(item).multiply(new BigDecimal(count)));
+		}
+		
+		return total;
 	}
 
 	private BigDecimal toItemPrice(String item) {
